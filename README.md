@@ -1,7 +1,6 @@
-<img src="/Resources/Icon.png" />
+<img src="/Resources/Icon.png" width="470" />
 
-# Cacher
-Super simple caching solution for iOS, macOS, tvOS and watchOS. For a detail information about using "Cacher", checkout the article ["Caching anything in iOS"](https://medium.com/ios-os-x-development/caching-anything-in-ios-102176e46eba).
+For a detail information about using "Cacher", checkout the article ["Caching anything in iOS"](https://medium.com/ios-os-x-development/caching-anything-in-ios-102176e46eba).
 
 ## Installation
 
