@@ -18,9 +18,9 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		if let cachedText: CachableText? = cacher.load(fileName: "text") {
+		if let cachedText: CachableText = cacher.load(fileName: "text") {
 			// Replace the current text with the cached one
-			textField.text = cachedText?.value
+			textField.text = cachedText.value
 		}
 	}
 	
