@@ -19,7 +19,7 @@ final public class Cacher {
 	
 	// MARK: Initialization
 	
-	public init(destination: CacheDestination) {
+	public init(destination: CacheDestination) throws {
 		switch destination {
 		case .temporary:
 			self.destination = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -28,22 +28,31 @@ final public class Cacher {
 			self.destination = URL(fileURLWithPath: documentFolder).appendingPathComponent(folder, isDirectory: true)
 		}
 		
-		try? FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
+		do {
+			try FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
+		} catch let error {
+			throw error
+		}
 	}
 	
 	// MARK
 	
-	public func persist(item: Cachable, completion: @escaping (_ url: URL?) -> Void) {
+	public func persist(item: Cachable, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
 		var url: URL?
+		var persistError: Error?
 		
 		// Create an operation to process the request.
 		let operation = BlockOperation {
-			url = self.persist(data: item.transform(), at: self.destination.appendingPathComponent(item.fileName, isDirectory: false))
+			do {
+				url = try self.persist(data: item.transform(), at: self.destination.appendingPathComponent(item.fileName, isDirectory: false))
+			} catch let error {
+				persistError = error
+			}
 		}
 		
 		// Set the operation's completion block to call the request's completion handler.
 		operation.completionBlock = {
-			completion(url)
+			completion(url, persistError)
 		}
 		
 		// Add the operation to the queue to start the work.
@@ -55,22 +64,24 @@ final public class Cacher {
 	///
 	/// - Parameter fileName: of the cached data stored in the file system
 	/// - Returns: the decoded cached data (if any)
-	public func load<T: Cachable & Codable>(fileName: String) -> T? {
-		guard
-			let data = try? Data(contentsOf: destination.appendingPathComponent(fileName, isDirectory: false)),
-			let decoded = try? JSONDecoder().decode(T.self, from: data)
-			else { return nil }
-		return decoded
+	public func load<T: Cachable & Codable>(fileName: String) throws -> T {
+		do {
+			let data = try Data(contentsOf: destination.appendingPathComponent(fileName, isDirectory: false))
+			let decoded = try JSONDecoder().decode(T.self, from: data)
+			return decoded
+		} catch let error {
+			throw error
+		}
 	}
 	
 	// MARK: Private
 	
-	private func persist(data: Data, at url: URL) -> URL? {
+	private func persist(data: Data, at url: URL) throws -> URL {
 		do {
 			try data.write(to: url, options: [.atomicWrite])
 			return url
-		} catch {
-			return nil
+		} catch let error {
+			throw error
 		}
 	}
 }
@@ -82,9 +93,11 @@ public protocol Cachable {
 
 extension Cachable where Self: Codable {
 	public func transform() -> Data {
-		guard let encoded = try? JSONEncoder().encode(self) else {
-			fatalError("Unable to encode object")
+		do {
+			let encoded = try JSONEncoder().encode(self)
+			return encoded
+		} catch let error {
+			fatalError("Unable to encode object: \(error)")
 		}
-		return encoded
 	}
 }
