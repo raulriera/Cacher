@@ -13,12 +13,12 @@ class ViewController: UIViewController {
 	@IBOutlet weak var textField: UITextField!
 	
 	// Create a cacher and use the temporary directory
-	let cacher: Cacher = Cacher(destination: .temporary)
+	let cacher: Cacher = try! Cacher(destination: .temporary)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		if let cachedText: CachableText = cacher.load(fileName: "text") {
+		if let cachedText: CachableText = try? cacher.load(fileName: "text") {
 			// Replace the current text with the cached one
 			textField.text = cachedText.value
 		}
@@ -26,8 +26,12 @@ class ViewController: UIViewController {
 	
 	@IBAction func didPressCache(_ sender: UIButton) {
 		let cachableText = CachableText(value: textField.text ?? "")
-		cacher.persist(item: cachableText) { url in
-			print("Text persisted in \(String(describing: url))")
+		cacher.persist(item: cachableText) { url, error in
+			if let error = error {
+				print("Text failed to persist: \(error)")
+			} else {
+				print("Text persisted in \(String(describing: url))")
+			}
 		}
 	}
 }
