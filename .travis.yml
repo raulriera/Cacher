@@ -1,4 +1,6 @@
 language: swift
+xcode_project: Cacher.xcodeproj
+xcode_schema: Cacher
 
 env:
   - PLATFORM=Mac
