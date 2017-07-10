@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/raulriera/Cacher.svg?branch=master)](https://travis-ci.org/raulriera/Cacher)
+
 <img src="/Resources/Icon.png" />
 
 For a detail information about using "Cacher", checkout the article ["Caching anything in iOS"](https://medium.com/ios-os-x-development/caching-anything-in-ios-102176e46eba).

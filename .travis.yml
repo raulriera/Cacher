@@ -1,0 +1,7 @@
+language: swift
+
+env:
+  - PLATFORM=Mac
+  - PLATFORM=iOS NAME='iPhone SE'
+  - PLATFORM=tvOS NAME='Apple TV 1080p'
+  - PLATFORM=watchOS
