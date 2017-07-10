@@ -19,7 +19,7 @@ final public class Cacher {
 	
 	// MARK: Initialization
 	
-	public init(destination: CacheDestination) {
+	public init?(destination: CacheDestination) {
 		switch destination {
 		case .temporary:
 			self.destination = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -28,22 +28,31 @@ final public class Cacher {
 			self.destination = URL(fileURLWithPath: documentFolder).appendingPathComponent(folder, isDirectory: true)
 		}
 		
-		try? FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
+		do {
+			try FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
+		} catch {
+			return nil
+		}
 	}
 	
 	// MARK
 	
-	public func persist(item: Cachable, completion: @escaping (_ url: URL?) -> Void) {
+	public func persist(item: Cachable, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
 		var url: URL?
+		var error: Error?
 		
 		// Create an operation to process the request.
 		let operation = BlockOperation {
-			url = self.persist(data: item.transform(), at: self.destination.appendingPathComponent(item.fileName, isDirectory: false))
+			do {
+				url = try self.persist(data: item.transform(), at: self.destination.appendingPathComponent(item.fileName, isDirectory: false))
+			} catch let persistError {
+				error = persistError
+			}
 		}
 		
 		// Set the operation's completion block to call the request's completion handler.
 		operation.completionBlock = {
-			completion(url)
+			completion(url, error)
 		}
 		
 		// Add the operation to the queue to start the work.
@@ -65,12 +74,12 @@ final public class Cacher {
 	
 	// MARK: Private
 	
-	private func persist(data: Data, at url: URL) -> URL? {
+	private func persist(data: Data, at url: URL) throws -> URL {
 		do {
 			try data.write(to: url, options: [.atomicWrite])
 			return url
-		} catch {
-			return nil
+		} catch let error {
+			throw error
 		}
 	}
 }
@@ -82,9 +91,11 @@ public protocol Cachable {
 
 extension Cachable where Self: Codable {
 	public func transform() -> Data {
-		guard let encoded = try? JSONEncoder().encode(self) else {
-			fatalError("Unable to encode object")
+		do {
+			let encoded = try JSONEncoder().encode(self)
+			return encoded
+		} catch let error {
+			fatalError("Unable to encode object: \(error)")
 		}
-		return encoded
 	}
 }
