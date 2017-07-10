@@ -13,12 +13,12 @@ class ViewController: UIViewController {
 	@IBOutlet weak var textField: UITextField!
 	
 	// Create a cacher and use the temporary directory
-	let cacher: Cacher = try! Cacher(destination: .temporary)
+	let cacher: Cacher = Cacher(destination: .temporary)!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		if let cachedText: CachableText = try? cacher.load(fileName: "text") {
+		if let cachedText: CachableText = cacher.load(fileName: "text") {
 			// Replace the current text with the cached one
 			textField.text = cachedText.value
 		}

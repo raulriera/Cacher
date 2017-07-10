@@ -19,7 +19,7 @@ final public class Cacher {
 	
 	// MARK: Initialization
 	
-	public init(destination: CacheDestination) throws {
+	public init?(destination: CacheDestination) {
 		switch destination {
 		case .temporary:
 			self.destination = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -30,8 +30,8 @@ final public class Cacher {
 		
 		do {
 			try FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
-		} catch let error {
-			throw error
+		} catch {
+			return nil
 		}
 	}
 	
@@ -39,20 +39,20 @@ final public class Cacher {
 	
 	public func persist(item: Cachable, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
 		var url: URL?
-		var persistError: Error?
+		var error: Error?
 		
 		// Create an operation to process the request.
 		let operation = BlockOperation {
 			do {
 				url = try self.persist(data: item.transform(), at: self.destination.appendingPathComponent(item.fileName, isDirectory: false))
-			} catch let error {
-				persistError = error
+			} catch let persistError {
+				error = persistError
 			}
 		}
 		
 		// Set the operation's completion block to call the request's completion handler.
 		operation.completionBlock = {
-			completion(url, persistError)
+			completion(url, error)
 		}
 		
 		// Add the operation to the queue to start the work.
@@ -64,14 +64,12 @@ final public class Cacher {
 	///
 	/// - Parameter fileName: of the cached data stored in the file system
 	/// - Returns: the decoded cached data (if any)
-	public func load<T: Cachable & Codable>(fileName: String) throws -> T {
-		do {
-			let data = try Data(contentsOf: destination.appendingPathComponent(fileName, isDirectory: false))
-			let decoded = try JSONDecoder().decode(T.self, from: data)
-			return decoded
-		} catch let error {
-			throw error
-		}
+	public func load<T: Cachable & Codable>(fileName: String) -> T? {
+		guard
+			let data = try? Data(contentsOf: destination.appendingPathComponent(fileName, isDirectory: false)),
+			let decoded = try? JSONDecoder().decode(T.self, from: data)
+			else { return nil }
+		return decoded
 	}
 	
 	// MARK: Private
