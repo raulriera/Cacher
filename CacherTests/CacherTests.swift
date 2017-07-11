@@ -13,7 +13,7 @@ class CacherTests: XCTestCase {
 	func testPersistCachableItemAtTemporaryFolder() {
 		let expectation = self.expectation(description: "Wrote file in folder")
 		
-		Cacher(destination: .temporary)?.persist(item: CachableText(text: "Raul Riera")) { url, _ in
+		Cacher(destination: .temporary).persist(item: CachableText(text: "Raul Riera")) { url, _ in
 			#if os(OSX)
 				let tempFolder = "T"
 			#else
@@ -31,7 +31,7 @@ class CacherTests: XCTestCase {
 	func testPersistCachableItemAtCustomFolder() {
 		let expectation = self.expectation(description: "Wrote file in folder")
 		
-		Cacher(destination: .atFolder("/test-folder"))?.persist(item: CachableText(text: "Raul Riera")) { url, _ in
+		Cacher(destination: .atFolder("/test-folder")).persist(item: CachableText(text: "Raul Riera")) { url, _ in
 			if url!.absoluteString.contains("/test-folder/testFile.txt") {
 				expectation.fulfill()
 			}

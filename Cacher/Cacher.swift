@@ -8,18 +8,30 @@
 
 import Foundation
 
+/// `Cacher` is a super simple cross platform solution to persist `Cachable` types into the filesystem.
 final public class Cacher {
+	/// The path in the filesystem that will hold all the persisted items
 	let destination: URL
 	private let queue = OperationQueue()
 	
+	/// A type for the type of persistance options.
+	///
+	/// - temporary: stores `Cachable` types into the temporary folder of the OS.
+	/// - atFolder: stores `Cachable` types into a specific folder in the OS.
 	public enum CacheDestination {
+		/// Stores items in `NSTemporaryDirectory`
 		case temporary
+		/// Stores items at a specific location
 		case atFolder(String)
 	}
 	
 	// MARK: Initialization
 	
-	public init?(destination: CacheDestination) {
+	/// Initializes a newly created `Cacher` instance using the specified storage destination.
+	/// *Note* If using `.atFolder(String)` make sure the destination is valid.
+	///
+	/// - Parameter destination: path to the location where `Cacher` will persist its `Cachable` items.
+	public init(destination: CacheDestination) {
 		switch destination {
 		case .temporary:
 			self.destination = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -28,15 +40,16 @@ final public class Cacher {
 			self.destination = URL(fileURLWithPath: documentFolder).appendingPathComponent(folder, isDirectory: true)
 		}
 		
-		do {
-			try FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
-		} catch {
-			return nil
-		}
+		try? FileManager.default.createDirectory(at: self.destination, withIntermediateDirectories: true, attributes: nil)
 	}
 	
 	// MARK
 	
+	/// Store a `Cachable` object in the directory selected by this `Cacher` instance.
+	///
+	/// - Parameters:
+	///   - item: `Cachable` object to persist in the filesystem
+	///   - completion: callback invoked when the persistance finishes, it will either contain the `URL` of the persisted item, or the `Error` raised while trying to.
 	public func persist(item: Cachable, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) {
 		var url: URL?
 		var error: Error?
@@ -58,7 +71,6 @@ final public class Cacher {
 		// Add the operation to the queue to start the work.
 		queue.addOperation(operation)
 	}
-	
 	
 	/// Load cached data from the directory
 	///
@@ -84,8 +96,14 @@ final public class Cacher {
 	}
 }
 
+/// A type that can persist itself into the filesystem.
 public protocol Cachable {
+	/// The item's name in the filesystem.
 	var fileName: String { get }
+	
+	/// Returns a `Data` encoded representation of the item.
+	///
+	/// - Returns: `Data` representation of the item.
 	func transform() -> Data
 }
 
