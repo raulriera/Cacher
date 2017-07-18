@@ -65,7 +65,13 @@ struct Movie: Codable {
 }
 ```
 
-The previous code is all we need to store a collection of movies into the filesystem. 🎉
+The previous code is all we need to store a collection of movies into the filesystem. 🎉 Now we can simply use the `persist` method like this.
+
+```swift
+Cacher(destination: .temporary).persist(item: CachableMovies(store: "USA", movies: myArrayOfMovies)) { url, error in
+	// Completion handler when the process finishes
+}
+```
 
 ## Created by
 Raul Riera, [@raulriera](http://twitter.com/raulriera)
