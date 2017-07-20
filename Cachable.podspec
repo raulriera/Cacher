@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "Cacher"
+  s.name         = "Cachable"
   s.version      = "1.2.0"
   s.summary      = "Super simple caching solution for iOS, macOS, tvOS and watchOS"
 
