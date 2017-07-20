@@ -18,6 +18,15 @@ Add the following to your Cartfile:
 github "raulriera/Cacher"
 ```
 
+### Cocoapods
+
+Add the following to your Podfile (mind the name, Cacher was already taken):
+
+``` ruby
+use_frameworks!
+pod "Cachable"
+```
+
 ## How to use them
 
 For a quick TL;DR check out the sample project at `CacherDemo`. It will guide you with the simplest caching possible, persisting string values.
