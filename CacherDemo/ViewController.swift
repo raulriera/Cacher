@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var textField: UITextField!
 	
 	// Create a cacher and use the temporary directory
-	let cacher: Cacher = Cacher(destination: .temporary)!
+	let cacher: Cacher = Cacher(destination: .temporary)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
