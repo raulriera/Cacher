@@ -40,7 +40,7 @@ public protocol Cachable {
 }
 ```
 
-It all comes down to this simple protocol, that has only two requirements `fileName` which represents the unique name to store in the filesystem, and `transform` which is the `Data` representation of what you wish to import. Using the magic of Swift 4 `Codable`, we can skip the `transform` implementation and use the implicit one declared [right here](/blob/master/Cacher/Cacher.swift#L83).
+It all comes down to this simple protocol, that has only two requirements `fileName` which represents the unique name to store in the filesystem, and `transform` which is the `Data` representation of what you wish to import. Using the magic of Swift 4 `Codable`, we can skip the `transform` implementation and use the implicit one declared [right here](/Cacher/Cacher.swift#L110).
 
 After we implement conform to `Cachable` and `Codable`, anything can be stored in the filesystem using the `persist:item:completion` method.
 
