@@ -14,18 +14,13 @@ Drag and drop the `Cacher/` folder into your project.
 
 Add the following to your Cartfile:
 
-``` ruby
+```ruby
 github "raulriera/Cacher"
 ```
 
-### Cocoapods
+### Swift Package Manager
 
-Add the following to your Podfile (mind the name, Cacher was already taken):
-
-``` ruby
-use_frameworks!
-pod "Cachable"
-```
+Add this repo to your dependencies.
 
 ## How to use them
 
