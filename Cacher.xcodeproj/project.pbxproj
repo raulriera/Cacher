@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CB761531F116F4A00E6F9BE /* Cacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB761521F116F4A00E6F9BE /* Cacher.swift */; };
+		4C65D7B1238C148D008E21CD /* Cacher.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C710F1F238B171600EB455F /* Cacher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C710F21238B171600EB455F /* Cacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C710F1E238B171600EB455F /* Cacher.swift */; };
+		4C710F28238B172A00EB455F /* CacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C710F26238B172A00EB455F /* CacherTests.swift */; };
 		4CB7615B1F116F9C00E6F9BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7615A1F116F9C00E6F9BE /* AppDelegate.swift */; };
 		4CB7615D1F116F9C00E6F9BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7615C1F116F9C00E6F9BE /* ViewController.swift */; };
 		4CB761601F116F9C00E6F9BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB7615E1F116F9C00E6F9BE /* Main.storyboard */; };
@@ -16,8 +18,6 @@
 		4CCF5E5A1F5DEF7300CDC01C /* Cacher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE8823A1F116D8400A2F3D8 /* Cacher.framework */; };
 		4CCF5E5B1F5DEF7300CDC01C /* Cacher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE8823A1F116D8400A2F3D8 /* Cacher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CE882441F116D8400A2F3D8 /* Cacher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE8823A1F116D8400A2F3D8 /* Cacher.framework */; };
-		4CE882491F116D8400A2F3D8 /* CacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE882481F116D8400A2F3D8 /* CacherTests.swift */; };
-		4CE8824B1F116D8400A2F3D8 /* Cacher.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CE8823D1F116D8400A2F3D8 /* Cacher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4CE882391F116D8400A2F3D8;
 			remoteInfo = Cacher;
+		};
+		4C710F2C238C138C00EB455F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE882311F116D8400A2F3D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CB761571F116F9B00E6F9BE;
+			remoteInfo = CacherDemo;
 		};
 		4CE882451F116D8400A2F3D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,7 +59,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4CB761521F116F4A00E6F9BE /* Cacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cacher.swift; sourceTree = "<group>"; };
+		4C710F1E238B171600EB455F /* Cacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacher.swift; sourceTree = "<group>"; };
+		4C710F1F238B171600EB455F /* Cacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cacher.h; sourceTree = "<group>"; };
+		4C710F20238B171600EB455F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C710F26238B172A00EB455F /* CacherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacherTests.swift; sourceTree = "<group>"; };
+		4C710F27238B172A00EB455F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CB761581F116F9B00E6F9BE /* CacherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CacherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB7615A1F116F9C00E6F9BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CB7615C1F116F9C00E6F9BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,11 +72,7 @@
 		4CB761641F116F9C00E6F9BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CB761661F116F9C00E6F9BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CE8823A1F116D8400A2F3D8 /* Cacher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cacher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CE8823D1F116D8400A2F3D8 /* Cacher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cacher.h; sourceTree = "<group>"; };
-		4CE8823E1F116D8400A2F3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CE882431F116D8400A2F3D8 /* CacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CE882481F116D8400A2F3D8 /* CacherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacherTests.swift; sourceTree = "<group>"; };
-		4CE8824A1F116D8400A2F3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +102,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C710F1A238B171600EB455F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4C710F1E238B171600EB455F /* Cacher.swift */,
+				4C710F1F238B171600EB455F /* Cacher.h */,
+				4C710F20238B171600EB455F /* Info.plist */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4C710F24238B172A00EB455F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4C710F26238B172A00EB455F /* CacherTests.swift */,
+				4C710F27238B172A00EB455F /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		4CB761591F116F9C00E6F9BE /* CacherDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,11 +144,11 @@
 		4CE882301F116D8400A2F3D8 = {
 			isa = PBXGroup;
 			children = (
-				4CE8823C1F116D8400A2F3D8 /* Cacher */,
-				4CE882471F116D8400A2F3D8 /* CacherTests */,
 				4CB761591F116F9C00E6F9BE /* CacherDemo */,
-				4CE8823B1F116D8400A2F3D8 /* Products */,
 				4CDE502B1FEEF97F005E814F /* Frameworks */,
+				4CE8823B1F116D8400A2F3D8 /* Products */,
+				4C710F1A238B171600EB455F /* Sources */,
+				4C710F24238B172A00EB455F /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,25 +162,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4CE8823C1F116D8400A2F3D8 /* Cacher */ = {
-			isa = PBXGroup;
-			children = (
-				4CE8823D1F116D8400A2F3D8 /* Cacher.h */,
-				4CB761521F116F4A00E6F9BE /* Cacher.swift */,
-				4CE8823E1F116D8400A2F3D8 /* Info.plist */,
-			);
-			path = Cacher;
-			sourceTree = "<group>";
-		};
-		4CE882471F116D8400A2F3D8 /* CacherTests */ = {
-			isa = PBXGroup;
-			children = (
-				4CE882481F116D8400A2F3D8 /* CacherTests.swift */,
-				4CE8824A1F116D8400A2F3D8 /* Info.plist */,
-			);
-			path = CacherTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -162,7 +169,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CE8824B1F116D8400A2F3D8 /* Cacher.h in Headers */,
+				4C65D7B1238C148D008E21CD /* Cacher.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +225,7 @@
 			);
 			dependencies = (
 				4CE882461F116D8400A2F3D8 /* PBXTargetDependency */,
+				4C710F2D238C138C00EB455F /* PBXTargetDependency */,
 			);
 			name = CacherTests;
 			productName = CacherTests;
@@ -310,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CB761531F116F4A00E6F9BE /* Cacher.swift in Sources */,
+				4C710F21238B171600EB455F /* Cacher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,13 +326,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CE882491F116D8400A2F3D8 /* CacherTests.swift in Sources */,
+				4C710F28238B172A00EB455F /* CacherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C710F2D238C138C00EB455F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CB761571F116F9B00E6F9BE /* CacherDemo */;
+			targetProxy = 4C710F2C238C138C00EB455F /* PBXContainerItemProxy */;
+		};
 		4CCF5E5D1F5DEF7300CDC01C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CE882391F116D8400A2F3D8 /* Cacher */;
@@ -517,7 +530,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Cacher/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -548,7 +561,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Cacher/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -573,7 +586,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = CacherTests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raulriera.CacherTests;
