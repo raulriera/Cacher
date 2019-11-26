@@ -1,9 +1,0 @@
-language: swift
-xcode_project: Cacher.xcodeproj
-xcode_schema: Cacher
-
-env:
-  - PLATFORM=Mac
-  - PLATFORM=iOS NAME='iPhone SE'
-  - PLATFORM=tvOS NAME='Apple TV 1080p'
-  - PLATFORM=watchOS

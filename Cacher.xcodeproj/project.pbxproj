@@ -105,9 +105,7 @@
 		4C710F1A238B171600EB455F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4C710F1E238B171600EB455F /* Cacher.swift */,
-				4C710F1F238B171600EB455F /* Cacher.h */,
-				4C710F20238B171600EB455F /* Info.plist */,
+				4CF38EAB238DE86A00CFA350 /* Cacher */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -115,8 +113,7 @@
 		4C710F24238B172A00EB455F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4C710F26238B172A00EB455F /* CacherTests.swift */,
-				4C710F27238B172A00EB455F /* Info.plist */,
+				4CF38EAC238DE87800CFA350 /* CacherTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -160,6 +157,25 @@
 				4CB761581F116F9B00E6F9BE /* CacherDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4CF38EAB238DE86A00CFA350 /* Cacher */ = {
+			isa = PBXGroup;
+			children = (
+				4C710F1E238B171600EB455F /* Cacher.swift */,
+				4C710F1F238B171600EB455F /* Cacher.h */,
+				4C710F20238B171600EB455F /* Info.plist */,
+			);
+			path = Cacher;
+			sourceTree = "<group>";
+		};
+		4CF38EAC238DE87800CFA350 /* CacherTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C710F26238B172A00EB455F /* CacherTests.swift */,
+				4C710F27238B172A00EB455F /* Info.plist */,
+			);
+			path = CacherTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,7 +546,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Cacher/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -561,7 +577,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Cacher/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -586,7 +602,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/CacherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raulriera.CacherTests;
