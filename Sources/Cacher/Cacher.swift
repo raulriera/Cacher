@@ -83,6 +83,20 @@ final public class Cacher {
 			else { return nil }
 		return decoded
 	}
+    
+    /// Remove cached data from the directory
+    ///
+    /// - Parameter fileName: of the cached data stored in the file system
+    public func removeCache(fileName: String) {
+        let fileManager = FileManager.default
+        
+        do {
+            let path = destination.appendingPathComponent(fileName)
+            try fileManager.removeItem(at: path)
+        } catch let error {
+            fatalError("Unable to remove object: \(error)")
+        }
+    }
 	
 	// MARK: Private
 	
